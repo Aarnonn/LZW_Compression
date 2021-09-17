@@ -38,7 +38,7 @@ public class Encoder {
     public static void main (String [] args) throws IOException {
     	FileWriter outputFile;
     	BufferedWriter writer = null;
-    	Encoder coder = new Encoder("lzw-file1.txt");
+    	Encoder coder = new Encoder("lzw-file2.txt");
     	try {
     		outputFile = new FileWriter("intcodesOutput.txt");
     		writer = new BufferedWriter(outputFile);

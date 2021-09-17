@@ -36,21 +36,21 @@ public class Decoder {
  		for (int i = 0; i < 255; i++)
  			dict.put(i, "" + (char) i);
  		
- 		String inputStr = ""+ (char) (int) compressedValues.get(0);
+ 		String oldStr = "" + compressedValues.get(0);
  		StringBuffer decodedValues = new StringBuffer();
  		
  		String newStr = null;
  		for (int key : compressedValues) {
  			if (dict.containsKey(key))
  				newStr = dict.get(key);
- 			else if (key == dictSize)
- 				newStr = inputStr + inputStr.charAt(0);
+ 			else 
+ 				newStr = oldStr + oldStr.charAt(0);
  			decodedValues.append(newStr);
  			
  			if(dictSize<maxDictSize)
- 				dict.put(dictSize++, inputStr + newStr.charAt(0));
+ 				dict.put(dictSize++, oldStr + newStr.charAt(0));
  			
- 			inputStr = newStr;
+ 			oldStr = newStr;
  		}
         createFile(decodedValues.toString());
  		return(decodedValues.toString());
